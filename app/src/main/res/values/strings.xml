@@ -1,0 +1,24 @@
+<resources>
+    <string name="app_name">Guess</string>
+    <string name="title_activity_txt">txt</string>
+    <string name="title_activity_start">Start</string>
+    <string name="title_activity_help">Help</string>
+    <string name="title_activity_kapitel">Kapitel</string>
+    <string name="title_activity_new_game">NewGame</string>
+    <string name="title_activity_high_score">HighScore</string>
+    <string name="spiel_verloren">Du hast leider kein Leben mehr. :/</string>
+    <string name="bonus">Herzlichen Glückwunsch Du hast fünf Fragen geschafft und erhälst einen Bonus von 25 Punkten</string>
+    <string name="err_empty_ed">Darf nicht leer sein</string>
+    <string name="new_game">Neues Spiel</string>
+    <string name="highscore">Highscore</string>
+    <string name="geschaffteFragen">Absolvierte Fragen: </string>
+    <string name="help1">Trage dein Ergebnis in das Feld ein</string>
+    <string name="help2">Nach dem Absenden wird prozentual die Differenz zwischen dem richtigen und deinem Ergebnis ermittelt</string>
+    <string name="help3">Nach jeweils 5 Runden erhältst du einen Bonus von 25 Punkten</string>
+    <string name="help4">Tippst Du genau das richtige Ergebnis erhältst Du einen Bonus von 25 Punkten</string>
+    <string name="help5">Sollten die Punkte aufgebraucht sein, endet das Spiel</string>
+    <string name="help6">Metrische Systeme stehen ggf. hinter den Fragen</string>
+    <string name="help7">Viel Spaß :-)</string>
+    <string name="help8"></string>
+    <string name="richtigeAntwort">Richtige Antwort: </string>
+</resources>

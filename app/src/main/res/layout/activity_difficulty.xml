@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/wp1"
+    android:layout_height="match_parent"
+    tools:context=".Difficulty">
+
+
+    <Button
+        android:id="@+id/btnSchwierigkeitLeicht"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Leicht"
+        android:textColor="@color/colorAccent"
+        android:background="#20000000"
+        android:layout_marginTop="20dp"
+        android:textStyle=""
+        style="@style/Widget.AppCompat.Button.Borderless.Colored"
+        android:layout_centerVertical="true"
+        android:fontFamily="monospace"
+        android:layout_above="@id/btnSchwierigkeitMittel"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        />
+
+    <Button
+        android:id="@+id/btnSchwierigkeitMittel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Mittel"
+        android:textColor="@color/colorAccent"
+        android:background="#20000000"
+        android:layout_marginTop="20dp"
+        android:textStyle=""
+        style="@style/Widget.AppCompat.Button.Borderless.Colored"
+        android:fontFamily="monospace"
+        android:layout_centerVertical="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:id="@+id/btnSchwierigkeitSchwer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Schwer"
+        android:textColor="@color/colorAccent"
+        android:background="#20000000"
+        android:layout_marginTop="20dp"
+        android:textStyle=""
+        style="@style/Widget.AppCompat.Button.Borderless.Colored"
+        android:layout_below="@+id/btnSchwierigkeitMittel"
+        android:fontFamily="monospace"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+</RelativeLayout>

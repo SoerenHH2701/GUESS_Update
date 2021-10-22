@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/wp1"
+    android:layout_height="match_parent"
+    tools:context="com.pigo.guess_reloaded.MainActivity">
+
+    <TextView
+        android:id="@+id/TextViewFrageDB"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Frage"
+        android:textSize="18dp"
+        android:gravity="center"
+        android:background="#20000000"
+        android:textAlignment="center"
+        android:fontFamily="monospace"
+        android:textStyle=""
+        android:textColor="@color/colorAccent"
+
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="60dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:id="@+id/TextViewAntwortDB"
+        android:layout_width="200dp"
+        android:layout_marginTop="10dp"
+        android:layout_height="wrap_content"
+        android:fontFamily="monospace"
+        android:gravity="center"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:textAlignment="center"
+        android:textColor="@color/colorAccent"
+        android:layout_below="@+id/TextViewFrageDB"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+
+    <EditText
+        android:id="@+id/EditTextEingabeAntwort"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="number"
+        android:fontFamily="monospace"
+        android:textColor="@color/colorAccent"
+        android:gravity="center"
+        android:layout_above="@+id/buttonLoesen"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:id="@+id/tvYourLife"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/colorAccent"
+        android:text="100"
+        android:maxLength="5"
+        android:fontFamily="monospace"
+        android:layout_alignTop="@+id/progressBar"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="91dp" />
+
+    <Button
+        android:id="@+id/buttonLoesen"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Lösen"
+        android:textColor="@color/colorAccent"
+        android:fontFamily="monospace"
+        style="@style/Widget.AppCompat.Button.Borderless.Colored"
+        android:background="@null"
+        android:layout_above="@+id/buttonNaechsteFrage"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <Button
+        android:id="@+id/buttonNaechsteFrage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Nächste Frage"
+        android:textColor="@color/colorAccent"
+        android:fontFamily="monospace"
+        android:background="@null"
+        style="@style/Widget.AppCompat.Button.Borderless.Colored"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:id="@+id/buttonNewGame"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Neues Spiel"
+        android:fontFamily="monospace"
+        android:textColor="@color/colorAccent"
+        android:background="@null"
+        style="@style/Widget.AppCompat.Button.Borderless.Colored"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_below="@+id/TextViewAntwortDB"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="36dp"
+        android:progress="100"
+        android:progressDrawable="@drawable/progressbarstyle"
+        android:rotation="270"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="16dp" />
+
+    <TextView
+        android:id="@+id/tvBonusPositiv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:textColor="@color/colorAccent"
+        android:fontFamily="monospace"
+        android:textStyle=""
+        android:layout_alignBaseline="@+id/tvYourLife"
+        android:layout_alignBottom="@+id/tvYourLife"
+        android:layout_toRightOf="@+id/progressBar"
+        android:layout_toEndOf="@+id/progressBar" />
+
+    <TextView
+        android:id="@+id/tvLebenNegativ"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="monospace"
+        android:text=""
+        android:textColor="@color/colorAccent"
+        android:textStyle="bold"
+        android:layout_alignBaseline="@+id/tvYourLife"
+        android:layout_alignBottom="@+id/tvYourLife"
+        android:layout_toLeftOf="@+id/progressBar"
+        android:layout_toStartOf="@+id/progressBar" />
+
+    <TextView
+        android:id="@+id/tvXP"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="18dp"
+        android:fontFamily="monospace"
+        android:text=""
+        android:textColor="@color/colorAccent"
+        android:textStyle="bold"
+        android:layout_below="@+id/progressBar"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:id="@+id/btnHighScore"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Highscore"
+        android:textColor="@color/colorAccent"
+        android:fontFamily="monospace"
+        style="@style/Widget.AppCompat.Button.Borderless.Colored"
+        android:background="@null"
+        android:layout_above="@+id/buttonNaechsteFrage"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+</RelativeLayout>
