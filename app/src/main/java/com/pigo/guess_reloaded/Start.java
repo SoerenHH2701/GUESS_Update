@@ -2,8 +2,10 @@ package com.pigo.guess_reloaded;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -38,14 +40,51 @@ public class Start extends AppCompatActivity {
 
         }
 
-        Button start = (Button) findViewById(R.id.btnStart);
-        start.setOnClickListener(new View.OnClickListener() {
+        Button start = findViewById(R.id.btnStart);
+        start.setVisibility(View.GONE);
 
+        TextView tvLogo = findViewById(R.id.tvLogo);
+
+        new Handler().postDelayed(new Runnable() {
             @Override
-            public void onClick(View v) {
-                Intent i = new Intent(Start.this, Difficulty.class);
-                startActivity(i);
+            public void run() {
+                tvLogo.append("G");
             }
+        }, 600);
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                tvLogo.append("U");
+            }
+        }, 900);
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                tvLogo.append("E");
+            }
+        }, 1200);
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                tvLogo.append("S");
+            }
+        }, 1500);
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                tvLogo.append("S");
+            }
+        }, 1800);
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                start.setVisibility(View.VISIBLE);
+            }
+        }, 2100);
+
+        start.setOnClickListener(v -> {
+            Intent i = new Intent(Start.this, Difficulty.class);
+            startActivity(i);
         });
 
     }

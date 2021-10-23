@@ -2,12 +2,14 @@ package com.pigo.guess_reloaded;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.widget.Button;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -18,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
 
     private DB_Handler db;
     private final List<Integer> shuffleList = new ArrayList<>();
-    private Integer shuffelListIncrease = 0;
+    private Integer shuffelListIncrease = 0, androidProgress = 0;
     private String dbFrage, dbAntwort, dbAntwFalsch1, dbAntwFalsch2, dbAntwFalsch3;
     private TextView tvFrageDB, tvAntwortDB;
     private Button antwort1, antwort2, antwort3, antwort4, buttonNewGame;
@@ -34,7 +36,6 @@ public class MainActivity extends AppCompatActivity {
         buttonNewGame.setVisibility(View.GONE);
 
         db = new DB_Handler(this);
-        System.out.println("DELETE TABLE");
         db.removeAllRowsFromNewsTable();
 
         // Initialisierung der Listen
@@ -43,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
 
         // Prüfe Größe der Tabelle; wenn Tabellengröße abweichend wird die Tabelle gedropped und die Fragen hinzugefügt (onUpgrade)
         if (db.getSizeQA("selected_qa_table") != 0) {
-            System.out.println(db.getSizeQA("selected_qa_table")+" Anzahl Fragen!!");
+
         } else {
             for (DB_Columns_QANDA cn : qanda) {
                 db.addSelectedQA(new DB_Columns_QA(cn.getFrage(), cn.getAntwort(), cn.getAntwort_falsch_1(), cn.getAntwort_falsch_2(), cn.getAntwort_falsch_3()));
@@ -53,18 +54,17 @@ public class MainActivity extends AppCompatActivity {
         // Beziehe die Daten aus Tabelle "Selected_QA_Table" und mische diese zufällig
         for (int i = 0; i < db.getSize("selected_qa_table"); i++) {
             shuffleList.add(i);
-            System.out.println(i);
         }
         Collections.shuffle(shuffleList);
-        System.out.println(shuffleList);
-
         setFragenToButtons();
 
     }
 
     public void setFragenToButtons(){
 
-         System.out.println("Nach Shuffle");
+        Button buttonNewGame = (findViewById(R.id.buttonNewGame));
+        ProgressBar progressBar = (findViewById(R.id.progressBar));
+
         // Beziehe Fragen und Antworten und speichere sie in Variable
         dbFrage = getFrage(shuffleList.get(shuffelListIncrease));
         dbAntwort = getAntwort(shuffleList.get(shuffelListIncrease));
@@ -79,7 +79,6 @@ public class MainActivity extends AppCompatActivity {
         antworten.add(dbAntwFalsch2);
         antworten.add(dbAntwFalsch3);
 
-        System.out.println("Nach Fragen beziehen");
         Collections.shuffle(antworten);
 
         Button antwort1 = findViewById(R.id.antwort1);
@@ -95,7 +94,6 @@ public class MainActivity extends AppCompatActivity {
             antwort4.setText(antworten.get(3));
         }
 
-        System.out.println("Nach Fragen setzen");
         String antwort1Text = antwort1.getText().toString();
         String antwort2Text = antwort2.getText().toString();
         String antwort3Text = antwort3.getText().toString();
@@ -104,15 +102,12 @@ public class MainActivity extends AppCompatActivity {
             antwort1.setOnClickListener(v -> {
                 String ButtonAntw1Text = antwort1.getText().toString();
 
-                // Buttons deaktivieren
                 antwort1.setEnabled(false);
                 antwort2.setEnabled(false);
                 antwort3.setEnabled(false);
                 antwort4.setEnabled(false);
-                System.out.println("Button läuft");
 
                 if(dbAntwort == ButtonAntw1Text){
-                    System.out.println("Antwort richtig!!");
                     Animation anim = new AlphaAnimation(0.0f, 1.0f);
                     anim.setDuration(100);
                     anim.setStartOffset(20);
@@ -120,10 +115,10 @@ public class MainActivity extends AppCompatActivity {
                     anim.setRepeatCount(6);
                     if(anim.getRepeatCount() >= 6){
                         antwort1.setBackgroundColor(getResources().getColor(R.color.green));
+                        androidProgress = androidProgress+10;
+                        progressBar.setProgress(androidProgress);
                         Handler handler = new Handler();
                         handler.postDelayed(() -> {
-                            // Buttons wieder aktivieren
-                            System.out.println("Buttons aktivieren");
                             antwort1.setEnabled(true);
                             antwort2.setEnabled(true);
                             antwort3.setEnabled(true);
@@ -141,7 +136,6 @@ public class MainActivity extends AppCompatActivity {
                     anim.setStartOffset(20);
                     anim.setRepeatMode(Animation.REVERSE);
                     anim.setRepeatCount(6);
-                    System.out.println("Antwort " + dbAntwort + "Antwort 2 " + ButtonAntw1Text);
                     antwort1.startAnimation(anim);
                     antwort1.setBackgroundColor(getResources().getColor(R.color.red));
 
@@ -154,6 +148,12 @@ public class MainActivity extends AppCompatActivity {
                     if(dbAntwort == antwort4Text){
                         antwort4.setBackgroundColor(getResources().getColor(R.color.green));
                     }
+                    buttonNewGame.setVisibility(View.VISIBLE);
+                    buttonNewGame.setEnabled(true);
+                    buttonNewGame.setOnClickListener(v1 -> {
+                        Intent i = new Intent(MainActivity.this, Difficulty.class);
+                        startActivity(i);
+                    });
 
                 }
             });
@@ -166,10 +166,8 @@ public class MainActivity extends AppCompatActivity {
                 antwort2.setEnabled(false);
                 antwort3.setEnabled(false);
                 antwort4.setEnabled(false);
-                System.out.println("Button läuft");
 
                 if(dbAntwort == ButtonAntw2Text){
-                    System.out.println("Antwort richtig!!");
                     Animation anim = new AlphaAnimation(0.0f, 1.0f);
                     anim.setDuration(100);
                     anim.setStartOffset(20);
@@ -177,10 +175,11 @@ public class MainActivity extends AppCompatActivity {
                     anim.setRepeatCount(6);
                     if(anim.getRepeatCount() >= 6){
                         antwort2.setBackgroundColor(getResources().getColor(R.color.green));
+                        androidProgress = androidProgress+10;
+                        progressBar.setProgress(androidProgress);
                         Handler handler = new Handler();
                         handler.postDelayed(() -> {
                             // Buttons wieder aktivieren
-                            System.out.println("Buttons aktivieren");
                             antwort1.setEnabled(true);
                             antwort2.setEnabled(true);
                             antwort3.setEnabled(true);
@@ -198,7 +197,6 @@ public class MainActivity extends AppCompatActivity {
                     anim.setStartOffset(20);
                     anim.setRepeatMode(Animation.REVERSE);
                     anim.setRepeatCount(6);
-                    System.out.println("Antwort " + dbAntwort + "Antwort 2 " + ButtonAntw2Text);
                     antwort2.startAnimation(anim);
                     antwort2.setBackgroundColor(getResources().getColor(R.color.red));
 
@@ -211,21 +209,25 @@ public class MainActivity extends AppCompatActivity {
                     if(dbAntwort == antwort4Text){
                         antwort4.setBackgroundColor(getResources().getColor(R.color.green));
                     }
+                    buttonNewGame.setVisibility(View.VISIBLE);
+                    buttonNewGame.setEnabled(true);
+                    buttonNewGame.setOnClickListener(v1 -> {
+                        Intent i = new Intent(MainActivity.this, Difficulty.class);
+                        startActivity(i);
+                    });
                 }
             });
 
             antwort3.setOnClickListener(v -> {
                 String ButtonAntw3Text = antwort3.getText().toString();
 
-                // Buttons deaktivieren
                 antwort1.setEnabled(false);
                 antwort2.setEnabled(false);
                 antwort3.setEnabled(false);
                 antwort4.setEnabled(false);
-                System.out.println("Button läuft");
 
                 if(dbAntwort == ButtonAntw3Text){
-                    System.out.println("Antwort richtig!!");
+
                     Animation anim = new AlphaAnimation(0.0f, 1.0f);
                     anim.setDuration(100);
                     anim.setStartOffset(20);
@@ -233,10 +235,10 @@ public class MainActivity extends AppCompatActivity {
                     anim.setRepeatCount(6);
                     if(anim.getRepeatCount() >= 6){
                         antwort3.setBackgroundColor(getResources().getColor(R.color.green));
+                        androidProgress = androidProgress+10;
+                        progressBar.setProgress(androidProgress);
                         Handler handler = new Handler();
                         handler.postDelayed(() -> {
-                            // Buttons wieder aktivieren
-                            System.out.println("Buttons aktivieren");
                             antwort1.setEnabled(true);
                             antwort2.setEnabled(true);
                             antwort3.setEnabled(true);
@@ -254,7 +256,7 @@ public class MainActivity extends AppCompatActivity {
                     anim.setStartOffset(20);
                     anim.setRepeatMode(Animation.REVERSE);
                     anim.setRepeatCount(6);
-                    System.out.println("Antwort " + dbAntwort + "Antwort 2 " + ButtonAntw3Text);
+
                     antwort3.startAnimation(anim);
                     antwort3.setBackgroundColor(getResources().getColor(R.color.red));
 
@@ -267,21 +269,24 @@ public class MainActivity extends AppCompatActivity {
                     if(dbAntwort == antwort4Text){
                         antwort4.setBackgroundColor(getResources().getColor(R.color.green));
                     }
+                    buttonNewGame.setVisibility(View.VISIBLE);
+                    buttonNewGame.setEnabled(true);
+                    buttonNewGame.setOnClickListener(v1 -> {
+                        Intent i = new Intent(MainActivity.this, Difficulty.class);
+                        startActivity(i);
+                    });
                 }
             });
 
             antwort4.setOnClickListener(v -> {
                 String ButtonAntw4Text = antwort4.getText().toString();
 
-                // Buttons deaktivieren
                 antwort1.setEnabled(false);
                 antwort2.setEnabled(false);
                 antwort3.setEnabled(false);
                 antwort4.setEnabled(false);
-                System.out.println("Button läuft");
 
                 if(dbAntwort == ButtonAntw4Text){
-                    System.out.println("Antwort richtig!!");
                     Animation anim = new AlphaAnimation(0.0f, 1.0f);
                     anim.setDuration(100);
                     anim.setStartOffset(20);
@@ -289,10 +294,10 @@ public class MainActivity extends AppCompatActivity {
                     anim.setRepeatCount(6);
                     if(anim.getRepeatCount() >= 6){
                         antwort4.setBackgroundColor(getResources().getColor(R.color.green));
+                        androidProgress = androidProgress+10;
+                        progressBar.setProgress(androidProgress);
                         Handler handler = new Handler();
                         handler.postDelayed(() -> {
-                            // Buttons wieder aktivieren
-                            System.out.println("Buttons aktivieren");
                             antwort1.setEnabled(true);
                             antwort2.setEnabled(true);
                             antwort3.setEnabled(true);
@@ -310,7 +315,6 @@ public class MainActivity extends AppCompatActivity {
                     anim.setStartOffset(20);
                     anim.setRepeatMode(Animation.REVERSE);
                     anim.setRepeatCount(6);
-                    System.out.println("Antwort " + dbAntwort + "Antwort 2 " + ButtonAntw4Text);
                     antwort4.startAnimation(anim);
                     antwort4.setBackgroundColor(getResources().getColor(R.color.red));
 
@@ -323,6 +327,12 @@ public class MainActivity extends AppCompatActivity {
                     if(dbAntwort == antwort3Text){
                         antwort3.setBackgroundColor(getResources().getColor(R.color.green));
                     }
+                    buttonNewGame.setVisibility(View.VISIBLE);
+                    buttonNewGame.setEnabled(true);
+                    buttonNewGame.setOnClickListener(v1 -> {
+                        Intent i = new Intent(MainActivity.this, Difficulty.class);
+                        startActivity(i);
+                    });
                 }
             });
 
