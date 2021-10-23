@@ -1,7 +1,5 @@
 package com.pigo.guess_reloaded;
 
-import static java.util.Collections.shuffle;
-
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
@@ -75,7 +73,7 @@ public class MainActivity extends AppCompatActivity {
         dbAntwFalsch3 = getDbAntwFalsch3(shuffleList.get(shuffelListIncrease));
 
         // Speicher Antwortmöglichkeiten in List und shuffle, damit Antworten an unterschiedlichen Stellen stehen
-        ArrayList<String> antworten = new ArrayList<String>();
+        ArrayList<String> antworten = new ArrayList<>();
         antworten.add(dbAntwort);
         antworten.add(dbAntwFalsch1);
         antworten.add(dbAntwFalsch2);
@@ -84,10 +82,10 @@ public class MainActivity extends AppCompatActivity {
         System.out.println("Nach Fragen beziehen");
         Collections.shuffle(antworten);
 
-        Button antwort1 = (Button)findViewById(R.id.antwort1);
-        Button antwort2 = (Button)findViewById(R.id.antwort2);
-        Button antwort3 = (Button)findViewById(R.id.antwort3);
-        Button antwort4 = (Button)findViewById(R.id.antwort4);
+        Button antwort1 = findViewById(R.id.antwort1);
+        Button antwort2 = findViewById(R.id.antwort2);
+        Button antwort3 = findViewById(R.id.antwort3);
+        Button antwort4 = findViewById(R.id.antwort4);
 
         for (int i=0; i<antworten.size(); i++) {
             System.out.println(antworten.get(i));
@@ -103,247 +101,227 @@ public class MainActivity extends AppCompatActivity {
         String antwort3Text = antwort3.getText().toString();
         String antwort4Text = antwort4.getText().toString();
 
-            antwort1.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    String ButtonAntw1Text = antwort1.getText().toString();
+            antwort1.setOnClickListener(v -> {
+                String ButtonAntw1Text = antwort1.getText().toString();
 
-                    // Buttons deaktivieren
-                    antwort1.setEnabled(false);
-                    antwort2.setEnabled(false);
-                    antwort3.setEnabled(false);
-                    antwort4.setEnabled(false);
-                    System.out.println("Button läuft");
+                // Buttons deaktivieren
+                antwort1.setEnabled(false);
+                antwort2.setEnabled(false);
+                antwort3.setEnabled(false);
+                antwort4.setEnabled(false);
+                System.out.println("Button läuft");
 
-                    if(dbAntwort == ButtonAntw1Text){
-                        System.out.println("Antwort richtig!!");
-                        Animation anim = new AlphaAnimation(0.0f, 1.0f);
-                        anim.setDuration(100);
-                        anim.setStartOffset(20);
-                        anim.setRepeatMode(Animation.REVERSE);
-                        anim.setRepeatCount(6);
-                        if(anim.getRepeatCount() >= 6){
-                            antwort1.setBackgroundColor(getResources().getColor(R.color.green));
-                            Handler handler = new Handler();
-                            handler.postDelayed(new Runnable() {
-                                public void run() {
-                                    // Buttons wieder aktivieren
-                                    System.out.println("Buttons aktivieren");
-                                    antwort1.setEnabled(true);
-                                    antwort2.setEnabled(true);
-                                    antwort3.setEnabled(true);
-                                    antwort4.setEnabled(true);
-                                    antwort1.setBackgroundColor(getResources().getColor(R.color.buttonDefault));
-                                    shuffelListIncrease++;
-                                    setFragenToButtons();
-                                }
-                            }, 3000);
-                        }
-                        antwort1.startAnimation(anim);
+                if(dbAntwort == ButtonAntw1Text){
+                    System.out.println("Antwort richtig!!");
+                    Animation anim = new AlphaAnimation(0.0f, 1.0f);
+                    anim.setDuration(100);
+                    anim.setStartOffset(20);
+                    anim.setRepeatMode(Animation.REVERSE);
+                    anim.setRepeatCount(6);
+                    if(anim.getRepeatCount() >= 6){
+                        antwort1.setBackgroundColor(getResources().getColor(R.color.green));
+                        Handler handler = new Handler();
+                        handler.postDelayed(() -> {
+                            // Buttons wieder aktivieren
+                            System.out.println("Buttons aktivieren");
+                            antwort1.setEnabled(true);
+                            antwort2.setEnabled(true);
+                            antwort3.setEnabled(true);
+                            antwort4.setEnabled(true);
+                            antwort1.setBackgroundColor(getResources().getColor(R.color.buttonDefault));
+                            shuffelListIncrease++;
+                            setFragenToButtons();
+                        }, 3000);
                     }
-                    else{
-                        Animation anim = new AlphaAnimation(0.0f, 1.0f);
-                        anim.setDuration(100);
-                        anim.setStartOffset(20);
-                        anim.setRepeatMode(Animation.REVERSE);
-                        anim.setRepeatCount(6);
-                        System.out.println("Antwort " + dbAntwort + "Antwort 2 " + ButtonAntw1Text);
-                        antwort1.startAnimation(anim);
-                        antwort1.setBackgroundColor(getResources().getColor(R.color.red));
+                    antwort1.startAnimation(anim);
+                }
+                else{
+                    Animation anim = new AlphaAnimation(0.0f, 1.0f);
+                    anim.setDuration(100);
+                    anim.setStartOffset(20);
+                    anim.setRepeatMode(Animation.REVERSE);
+                    anim.setRepeatCount(6);
+                    System.out.println("Antwort " + dbAntwort + "Antwort 2 " + ButtonAntw1Text);
+                    antwort1.startAnimation(anim);
+                    antwort1.setBackgroundColor(getResources().getColor(R.color.red));
 
-                        if(dbAntwort == antwort2Text){
-                            antwort2.setBackgroundColor(getResources().getColor(R.color.green));
-                        }
-                        if(dbAntwort == antwort3Text){
-                            antwort3.setBackgroundColor(getResources().getColor(R.color.green));
-                        }
-                        if(dbAntwort == antwort4Text){
-                            antwort4.setBackgroundColor(getResources().getColor(R.color.green));
-                        }
+                    if(dbAntwort == antwort2Text){
+                        antwort2.setBackgroundColor(getResources().getColor(R.color.green));
+                    }
+                    if(dbAntwort == antwort3Text){
+                        antwort3.setBackgroundColor(getResources().getColor(R.color.green));
+                    }
+                    if(dbAntwort == antwort4Text){
+                        antwort4.setBackgroundColor(getResources().getColor(R.color.green));
+                    }
 
+                }
+            });
+
+            antwort2.setOnClickListener(v -> {
+                String ButtonAntw2Text = antwort2.getText().toString();
+
+                // Buttons deaktivieren
+                antwort1.setEnabled(false);
+                antwort2.setEnabled(false);
+                antwort3.setEnabled(false);
+                antwort4.setEnabled(false);
+                System.out.println("Button läuft");
+
+                if(dbAntwort == ButtonAntw2Text){
+                    System.out.println("Antwort richtig!!");
+                    Animation anim = new AlphaAnimation(0.0f, 1.0f);
+                    anim.setDuration(100);
+                    anim.setStartOffset(20);
+                    anim.setRepeatMode(Animation.REVERSE);
+                    anim.setRepeatCount(6);
+                    if(anim.getRepeatCount() >= 6){
+                        antwort2.setBackgroundColor(getResources().getColor(R.color.green));
+                        Handler handler = new Handler();
+                        handler.postDelayed(() -> {
+                            // Buttons wieder aktivieren
+                            System.out.println("Buttons aktivieren");
+                            antwort1.setEnabled(true);
+                            antwort2.setEnabled(true);
+                            antwort3.setEnabled(true);
+                            antwort4.setEnabled(true);
+                            antwort2.setBackgroundColor(getResources().getColor(R.color.buttonDefault));
+                            shuffelListIncrease++;
+                            setFragenToButtons();
+                        }, 3000);
+                    }
+                    antwort2.startAnimation(anim);
+                }
+                else{
+                    Animation anim = new AlphaAnimation(0.0f, 1.0f);
+                    anim.setDuration(100);
+                    anim.setStartOffset(20);
+                    anim.setRepeatMode(Animation.REVERSE);
+                    anim.setRepeatCount(6);
+                    System.out.println("Antwort " + dbAntwort + "Antwort 2 " + ButtonAntw2Text);
+                    antwort2.startAnimation(anim);
+                    antwort2.setBackgroundColor(getResources().getColor(R.color.red));
+
+                    if(dbAntwort == antwort1Text){
+                        antwort1.setBackgroundColor(getResources().getColor(R.color.green));
+                    }
+                    if(dbAntwort == antwort3Text){
+                        antwort3.setBackgroundColor(getResources().getColor(R.color.green));
+                    }
+                    if(dbAntwort == antwort4Text){
+                        antwort4.setBackgroundColor(getResources().getColor(R.color.green));
                     }
                 }
             });
 
-            antwort2.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    String ButtonAntw2Text = antwort2.getText().toString();
+            antwort3.setOnClickListener(v -> {
+                String ButtonAntw3Text = antwort3.getText().toString();
 
-                    // Buttons deaktivieren
-                    antwort1.setEnabled(false);
-                    antwort2.setEnabled(false);
-                    antwort3.setEnabled(false);
-                    antwort4.setEnabled(false);
-                    System.out.println("Button läuft");
+                // Buttons deaktivieren
+                antwort1.setEnabled(false);
+                antwort2.setEnabled(false);
+                antwort3.setEnabled(false);
+                antwort4.setEnabled(false);
+                System.out.println("Button läuft");
 
-                    if(dbAntwort == ButtonAntw2Text){
-                        System.out.println("Antwort richtig!!");
-                        Animation anim = new AlphaAnimation(0.0f, 1.0f);
-                        anim.setDuration(100);
-                        anim.setStartOffset(20);
-                        anim.setRepeatMode(Animation.REVERSE);
-                        anim.setRepeatCount(6);
-                        if(anim.getRepeatCount() >= 6){
-                            antwort2.setBackgroundColor(getResources().getColor(R.color.green));
-                            Handler handler = new Handler();
-                            handler.postDelayed(new Runnable() {
-                                public void run() {
-                                    // Buttons wieder aktivieren
-                                    System.out.println("Buttons aktivieren");
-                                    antwort1.setEnabled(true);
-                                    antwort2.setEnabled(true);
-                                    antwort3.setEnabled(true);
-                                    antwort4.setEnabled(true);
-                                    antwort2.setBackgroundColor(getResources().getColor(R.color.buttonDefault));
-                                    shuffelListIncrease++;
-                                    setFragenToButtons();
-                                }
-                            }, 3000);
-                        }
-                        antwort2.startAnimation(anim);
+                if(dbAntwort == ButtonAntw3Text){
+                    System.out.println("Antwort richtig!!");
+                    Animation anim = new AlphaAnimation(0.0f, 1.0f);
+                    anim.setDuration(100);
+                    anim.setStartOffset(20);
+                    anim.setRepeatMode(Animation.REVERSE);
+                    anim.setRepeatCount(6);
+                    if(anim.getRepeatCount() >= 6){
+                        antwort3.setBackgroundColor(getResources().getColor(R.color.green));
+                        Handler handler = new Handler();
+                        handler.postDelayed(() -> {
+                            // Buttons wieder aktivieren
+                            System.out.println("Buttons aktivieren");
+                            antwort1.setEnabled(true);
+                            antwort2.setEnabled(true);
+                            antwort3.setEnabled(true);
+                            antwort4.setEnabled(true);
+                            antwort3.setBackgroundColor(getResources().getColor(R.color.buttonDefault));
+                            shuffelListIncrease++;
+                            setFragenToButtons();
+                        }, 3000);
                     }
-                    else{
-                        Animation anim = new AlphaAnimation(0.0f, 1.0f);
-                        anim.setDuration(100);
-                        anim.setStartOffset(20);
-                        anim.setRepeatMode(Animation.REVERSE);
-                        anim.setRepeatCount(6);
-                        System.out.println("Antwort " + dbAntwort + "Antwort 2 " + ButtonAntw2Text);
-                        antwort2.startAnimation(anim);
-                        antwort2.setBackgroundColor(getResources().getColor(R.color.red));
+                    antwort3.startAnimation(anim);
+                }
+                else{
+                    Animation anim = new AlphaAnimation(0.0f, 1.0f);
+                    anim.setDuration(100);
+                    anim.setStartOffset(20);
+                    anim.setRepeatMode(Animation.REVERSE);
+                    anim.setRepeatCount(6);
+                    System.out.println("Antwort " + dbAntwort + "Antwort 2 " + ButtonAntw3Text);
+                    antwort3.startAnimation(anim);
+                    antwort3.setBackgroundColor(getResources().getColor(R.color.red));
 
-                        if(dbAntwort == antwort1Text){
-                            antwort1.setBackgroundColor(getResources().getColor(R.color.green));
-                        }
-                        if(dbAntwort == antwort3Text){
-                            antwort3.setBackgroundColor(getResources().getColor(R.color.green));
-                        }
-                        if(dbAntwort == antwort4Text){
-                            antwort4.setBackgroundColor(getResources().getColor(R.color.green));
-                        }
+                    if(dbAntwort == antwort1Text){
+                        antwort1.setBackgroundColor(getResources().getColor(R.color.green));
+                    }
+                    if(dbAntwort == antwort2Text){
+                        antwort2.setBackgroundColor(getResources().getColor(R.color.green));
+                    }
+                    if(dbAntwort == antwort4Text){
+                        antwort4.setBackgroundColor(getResources().getColor(R.color.green));
                     }
                 }
             });
 
-            antwort3.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    String ButtonAntw3Text = antwort3.getText().toString();
+            antwort4.setOnClickListener(v -> {
+                String ButtonAntw4Text = antwort4.getText().toString();
 
-                    // Buttons deaktivieren
-                    antwort1.setEnabled(false);
-                    antwort2.setEnabled(false);
-                    antwort3.setEnabled(false);
-                    antwort4.setEnabled(false);
-                    System.out.println("Button läuft");
+                // Buttons deaktivieren
+                antwort1.setEnabled(false);
+                antwort2.setEnabled(false);
+                antwort3.setEnabled(false);
+                antwort4.setEnabled(false);
+                System.out.println("Button läuft");
 
-                    if(dbAntwort == ButtonAntw3Text){
-                        System.out.println("Antwort richtig!!");
-                        Animation anim = new AlphaAnimation(0.0f, 1.0f);
-                        anim.setDuration(100);
-                        anim.setStartOffset(20);
-                        anim.setRepeatMode(Animation.REVERSE);
-                        anim.setRepeatCount(6);
-                        if(anim.getRepeatCount() >= 6){
-                            antwort3.setBackgroundColor(getResources().getColor(R.color.green));
-                            Handler handler = new Handler();
-                            handler.postDelayed(new Runnable() {
-                                public void run() {
-                                    // Buttons wieder aktivieren
-                                    System.out.println("Buttons aktivieren");
-                                    antwort1.setEnabled(true);
-                                    antwort2.setEnabled(true);
-                                    antwort3.setEnabled(true);
-                                    antwort4.setEnabled(true);
-                                    antwort3.setBackgroundColor(getResources().getColor(R.color.buttonDefault));
-                                    shuffelListIncrease++;
-                                    setFragenToButtons();
-                                }
-                            }, 3000);
-                        }
-                        antwort3.startAnimation(anim);
+                if(dbAntwort == ButtonAntw4Text){
+                    System.out.println("Antwort richtig!!");
+                    Animation anim = new AlphaAnimation(0.0f, 1.0f);
+                    anim.setDuration(100);
+                    anim.setStartOffset(20);
+                    anim.setRepeatMode(Animation.REVERSE);
+                    anim.setRepeatCount(6);
+                    if(anim.getRepeatCount() >= 6){
+                        antwort4.setBackgroundColor(getResources().getColor(R.color.green));
+                        Handler handler = new Handler();
+                        handler.postDelayed(() -> {
+                            // Buttons wieder aktivieren
+                            System.out.println("Buttons aktivieren");
+                            antwort1.setEnabled(true);
+                            antwort2.setEnabled(true);
+                            antwort3.setEnabled(true);
+                            antwort4.setEnabled(true);
+                            antwort4.setBackgroundColor(getResources().getColor(R.color.buttonDefault));
+                            shuffelListIncrease++;
+                            setFragenToButtons();
+                        }, 3000);
                     }
-                    else{
-                        Animation anim = new AlphaAnimation(0.0f, 1.0f);
-                        anim.setDuration(100);
-                        anim.setStartOffset(20);
-                        anim.setRepeatMode(Animation.REVERSE);
-                        anim.setRepeatCount(6);
-                        System.out.println("Antwort " + dbAntwort + "Antwort 2 " + ButtonAntw3Text);
-                        antwort3.startAnimation(anim);
-                        antwort3.setBackgroundColor(getResources().getColor(R.color.red));
-
-                        if(dbAntwort == antwort1Text){
-                            antwort1.setBackgroundColor(getResources().getColor(R.color.green));
-                        }
-                        if(dbAntwort == antwort2Text){
-                            antwort2.setBackgroundColor(getResources().getColor(R.color.green));
-                        }
-                        if(dbAntwort == antwort4Text){
-                            antwort4.setBackgroundColor(getResources().getColor(R.color.green));
-                        }
-                    }
+                    antwort4.startAnimation(anim);
                 }
-            });
+                else{
+                    Animation anim = new AlphaAnimation(0.0f, 1.0f);
+                    anim.setDuration(100);
+                    anim.setStartOffset(20);
+                    anim.setRepeatMode(Animation.REVERSE);
+                    anim.setRepeatCount(6);
+                    System.out.println("Antwort " + dbAntwort + "Antwort 2 " + ButtonAntw4Text);
+                    antwort4.startAnimation(anim);
+                    antwort4.setBackgroundColor(getResources().getColor(R.color.red));
 
-            antwort4.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    String ButtonAntw4Text = antwort4.getText().toString();
-
-                    // Buttons deaktivieren
-                    antwort1.setEnabled(false);
-                    antwort2.setEnabled(false);
-                    antwort3.setEnabled(false);
-                    antwort4.setEnabled(false);
-                    System.out.println("Button läuft");
-
-                    if(dbAntwort == ButtonAntw4Text){
-                        System.out.println("Antwort richtig!!");
-                        Animation anim = new AlphaAnimation(0.0f, 1.0f);
-                        anim.setDuration(100);
-                        anim.setStartOffset(20);
-                        anim.setRepeatMode(Animation.REVERSE);
-                        anim.setRepeatCount(6);
-                        if(anim.getRepeatCount() >= 6){
-                            antwort4.setBackgroundColor(getResources().getColor(R.color.green));
-                            Handler handler = new Handler();
-                            handler.postDelayed(new Runnable() {
-                                public void run() {
-                                    // Buttons wieder aktivieren
-                                    System.out.println("Buttons aktivieren");
-                                    antwort1.setEnabled(true);
-                                    antwort2.setEnabled(true);
-                                    antwort3.setEnabled(true);
-                                    antwort4.setEnabled(true);
-                                    antwort4.setBackgroundColor(getResources().getColor(R.color.buttonDefault));
-                                    shuffelListIncrease++;
-                                    setFragenToButtons();
-                                }
-                            }, 3000);
-                        }
-                        antwort4.startAnimation(anim);
+                    if(dbAntwort == antwort1Text){
+                        antwort1.setBackgroundColor(getResources().getColor(R.color.green));
                     }
-                    else{
-                        Animation anim = new AlphaAnimation(0.0f, 1.0f);
-                        anim.setDuration(100);
-                        anim.setStartOffset(20);
-                        anim.setRepeatMode(Animation.REVERSE);
-                        anim.setRepeatCount(6);
-                        System.out.println("Antwort " + dbAntwort + "Antwort 2 " + ButtonAntw4Text);
-                        antwort4.startAnimation(anim);
-                        antwort4.setBackgroundColor(getResources().getColor(R.color.red));
-
-                        if(dbAntwort == antwort1Text){
-                            antwort1.setBackgroundColor(getResources().getColor(R.color.green));
-                        }
-                        if(dbAntwort == antwort2Text){
-                            antwort2.setBackgroundColor(getResources().getColor(R.color.green));
-                        }
-                        if(dbAntwort == antwort3Text){
-                            antwort3.setBackgroundColor(getResources().getColor(R.color.green));
-                        }
+                    if(dbAntwort == antwort2Text){
+                        antwort2.setBackgroundColor(getResources().getColor(R.color.green));
+                    }
+                    if(dbAntwort == antwort3Text){
+                        antwort3.setBackgroundColor(getResources().getColor(R.color.green));
                     }
                 }
             });
