@@ -4,7 +4,6 @@
 
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@drawable/wp1"
     android:layout_height="match_parent"
     tools:context=".Difficulty">
@@ -17,9 +16,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="450dp"
         android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
         android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
         android:background="#20000000"
         android:fontFamily="monospace"
         android:text="Leicht"
@@ -33,9 +30,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/btnSchwierigkeitLeicht"
         android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
         android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
         android:background="#20000000"
         android:fontFamily="monospace"
         android:text="Mittel"
@@ -53,9 +48,7 @@
         android:textStyle=""
         style="@style/Widget.AppCompat.Button.Borderless.Colored"
         android:fontFamily="monospace"
-        android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
-        android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 
 </RelativeLayout>

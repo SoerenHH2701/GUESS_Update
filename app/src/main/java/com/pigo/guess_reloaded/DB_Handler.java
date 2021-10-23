@@ -6,6 +6,8 @@ import android.database.Cursor;
 import android.database.DatabaseUtils;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -107,7 +109,10 @@ public class DB_Handler extends SQLiteOpenHelper {
 
     public List<DB_Columns_QANDA> getAllQANDA() {
         List<DB_Columns_QANDA> qandaList = new ArrayList<>();
-        String selectQuery = "SELECT  * FROM " + TABLE_QANDA + " WHERE schwierigkeit = '"+Difficulty.clickedDifficulty+"' ";
+        String selectQuery = "SELECT * FROM " + TABLE_QANDA + " WHERE schwierigkeit = '"+Difficulty.clickedDifficulty+"' ";
+
+        System.out.println("query: "+selectQuery);
+        System.out.println("diff: "+Difficulty.clickedDifficulty);
 
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery(selectQuery, null);
@@ -133,7 +138,7 @@ public class DB_Handler extends SQLiteOpenHelper {
 
     public List<DB_Columns_QA> getAllQA() {
         List<DB_Columns_QA> qaList = new ArrayList<>();
-        String selectQuery = "SELECT  * FROM " + TABLE_SEL_QA;
+        String selectQuery = "SELECT * FROM " + TABLE_SEL_QA;
 
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery(selectQuery, null);
@@ -152,6 +157,14 @@ public class DB_Handler extends SQLiteOpenHelper {
             } while (cursor.moveToNext());
         }
         return qaList;
+    }
+
+    public void removeAllRowsFromNewsTable(){
+        Log.d("insert data", "");
+
+        // get reference to writable DB
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.delete("selected_qa_table",null,null);
     }
 
 
