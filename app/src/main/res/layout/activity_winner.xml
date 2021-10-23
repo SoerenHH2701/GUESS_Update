@@ -7,4 +7,33 @@
     android:layout_height="match_parent"
     tools:context="com.pigo.guess_reloaded.Winner">
 
+    <Button
+        android:id="@+id/btnRestart"
+        style="@style/Widget.AppCompat.Button.Borderless.Colored"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_marginTop="450dp"
+        android:background="@drawable/button_winner"
+        android:fontFamily="sans-serif-black"
+        android:text="Restart"
+        android:layout_centerHorizontal="true"
+        android:textColor="@color/colorAccent"
+        android:textStyle="" />
+
+    <TextView
+        android:id="@+id/tvWinner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="200dp"
+        android:layout_centerHorizontal="true"
+        android:textAlignment="center"
+        android:textSize="32dp"
+        android:fontFamily="sans-serif-black"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginBottom="2dp"
+        android:textColor="@color/colorAccent"
+        android:layout_marginHorizontal="1dp"
+        android:text="Herzlichen Glückwunsch" />
+
 </RelativeLayout>
