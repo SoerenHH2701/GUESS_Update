@@ -8,16 +8,18 @@ public class DB_Columns_QA {
     int idQA;
     String frageQA;
     String antwortQA;
-    public DB_Columns_QA(){   }
-    public DB_Columns_QA(int idQA, String frageQA, String antwortQA){
-        this.idQA = idQA;
-        this.frageQA = frageQA;
-        this.antwortQA = antwortQA;
-    }
+    String antwort_falsch_1_QA;
+    String antwort_falsch_2_QA;
+    String antwort_falsch_3_QA;
 
-    public DB_Columns_QA(String frageQA, String antwortQA){
+    public DB_Columns_QA(){   }
+
+    public DB_Columns_QA(String frageQA, String antwortQA, String antwort_falsch_1_QA, String antwort_falsch_2_QA, String antwort_falsch_3_QA){
         this.frageQA = frageQA;
         this.antwortQA = antwortQA;
+        this.antwort_falsch_1_QA = antwort_falsch_1_QA;
+        this.antwort_falsch_2_QA = antwort_falsch_2_QA;
+        this.antwort_falsch_3_QA = antwort_falsch_3_QA;
     }
     public int getIdQA(){
         return this.idQA;
@@ -42,6 +44,18 @@ public class DB_Columns_QA {
     public void setantwortQA(String antwortQA){
         this.antwortQA = antwortQA;
     }
+
+    public String getAntwort_falsch_1_QA() { return this.antwort_falsch_1_QA; }
+
+    public void setAntwort_falsch_1_QA(String antwort_falsch_1_QA) { this.antwort_falsch_1_QA = antwort_falsch_1_QA; }
+
+    public String getAntwort_falsch_2_QA() { return this.antwort_falsch_2_QA; }
+
+    public void setAntwort_falsch_2_QA(String antwort_falsch_2_QA) { this.antwort_falsch_2_QA = antwort_falsch_2_QA; }
+
+    public String getAntwort_falsch_3_QA() { return this.antwort_falsch_3_QA; }
+
+    public void setAntwort_falsch_3_QA(String antwort_falsch_3_QA) { this.antwort_falsch_3_QA = antwort_falsch_3_QA; }
 
 
 

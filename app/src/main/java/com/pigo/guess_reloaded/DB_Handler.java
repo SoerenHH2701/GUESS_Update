@@ -19,11 +19,16 @@ public class DB_Handler extends SQLiteOpenHelper {
     private static final String KEY_ID = "id";
     private static final String KEY_FRAGE = "frage";
     private static final String KEY_ANTWORT = "antwort";
+    private static final String KEY_SCHWIERIGKEIT = "schwierigkeit";
     private static final String QA_KEY_ID = "id";
     private static final String QA_KEY_FRAGE = "frage";
     private static final String QA_KEY_ANTWORT = "antwort";
-    private static final String KEY_KATEGORIE = "kategorie";
-    private static final String KEY_SCHWIERIGKEIT = "schwierigkeit";
+    private static final String ANTWORT_FALSCH_1 = "antwort_falsch_1";
+    private static final String ANTWORT_FALSCH_2 = "antwort_falsch_2";
+    private static final String ANTWORT_FALSCH_3 = "antwort_falsch_3";
+    private static final String ANTWORT_FALSCH_1_QA = "antwort_falsch_1_qa";
+    private static final String ANTWORT_FALSCH_2_QA = "antwort_falsch_2_qa";
+    private static final String ANTWORT_FALSCH_3_QA = "antwort_falsch_3_qa";
 
     public DB_Handler(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -34,12 +39,14 @@ public class DB_Handler extends SQLiteOpenHelper {
 
             String CREATE_TABLE_QANDA = "CREATE TABLE " + TABLE_QANDA + "("
                     + KEY_ID + " INTEGER PRIMARY KEY," + KEY_FRAGE + " TEXT,"
-                    + KEY_ANTWORT + " TEXT," + KEY_KATEGORIE + " TEXT," + KEY_SCHWIERIGKEIT + " TEXT" + ")";
+                    + KEY_ANTWORT + " TEXT," + KEY_SCHWIERIGKEIT + " TEXT,"
+                    + ANTWORT_FALSCH_1 + " TEXT," + ANTWORT_FALSCH_2 + " TEXT," + ANTWORT_FALSCH_3 + " TEXT" + ")";
             db.execSQL(CREATE_TABLE_QANDA);
 
             String CREATE_TABLE_SEL_QA = "CREATE TABLE " + TABLE_SEL_QA + "("
                     + QA_KEY_ID + " INTEGER PRIMARY KEY," + QA_KEY_FRAGE + " TEXT,"
-                    + QA_KEY_ANTWORT + " TEXT" + ")";
+                    + QA_KEY_ANTWORT + " TEXT," + ANTWORT_FALSCH_1_QA + " TEXT," + ANTWORT_FALSCH_2_QA + " TEXT,"
+                    + ANTWORT_FALSCH_3_QA + " TEXT" + ")";
             db.execSQL(CREATE_TABLE_SEL_QA);
 
     }
@@ -72,8 +79,10 @@ public class DB_Handler extends SQLiteOpenHelper {
         ContentValues values = new ContentValues();
         values.put(KEY_FRAGE, qanda.getFrage());
         values.put(KEY_ANTWORT, qanda.getAntwort());
-        values.put(KEY_KATEGORIE, qanda.getKategorie());
         values.put(KEY_SCHWIERIGKEIT, qanda.getSchwierigkeit());
+        values.put(ANTWORT_FALSCH_1, qanda.getAntwort_falsch_1());
+        values.put(ANTWORT_FALSCH_2, qanda.getAntwort_falsch_2());
+        values.put(ANTWORT_FALSCH_3, qanda.getAntwort_falsch_3());
 
         db.insert(TABLE_QANDA, null, values);
         db.close();
@@ -86,6 +95,9 @@ public class DB_Handler extends SQLiteOpenHelper {
         ContentValues values = new ContentValues();
         values.put(QA_KEY_FRAGE, qa.getfrageQA());
         values.put(QA_KEY_ANTWORT, qa.getantwortQA());
+        values.put(ANTWORT_FALSCH_1_QA, qa.getAntwort_falsch_1_QA());
+        values.put(ANTWORT_FALSCH_2_QA, qa.getAntwort_falsch_2_QA());
+        values.put(ANTWORT_FALSCH_3_QA, qa.getAntwort_falsch_3_QA());
 
         db.insert(TABLE_SEL_QA, null, values);
         db.close();
@@ -95,7 +107,7 @@ public class DB_Handler extends SQLiteOpenHelper {
 
     public List<DB_Columns_QANDA> getAllQANDA() {
         List<DB_Columns_QANDA> qandaList = new ArrayList<>();
-        String selectQuery = "SELECT  * FROM " + TABLE_QANDA + " WHERE kategorie = '"+Category.clickedKategorie+"' AND schwierigkeit = '"+Difficulty.clickedDifficulty+"' ";
+        String selectQuery = "SELECT  * FROM " + TABLE_QANDA + " WHERE schwierigkeit = '"+Difficulty.clickedDifficulty+"' ";
 
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery(selectQuery, null);
@@ -106,8 +118,10 @@ public class DB_Handler extends SQLiteOpenHelper {
                 qanda.setID(Integer.parseInt(cursor.getString(0)));
                 qanda.setFrage(cursor.getString(1));
                 qanda.setAntwort(cursor.getString(2));
-                qanda.setKategorie(cursor.getString(3));
-                qanda.setSchwierigkeit(cursor.getString(4));
+                qanda.setSchwierigkeit(cursor.getString(3));
+                qanda.setAntwort_falsch_1(cursor.getString(4));
+                qanda.setAntwort_falsch_2(cursor.getString(5));
+                qanda.setAntwort_falsch_3(cursor.getString(6));
                 // Adding contact to list
                 qandaList.add(qanda);
             } while (cursor.moveToNext());
@@ -130,6 +144,9 @@ public class DB_Handler extends SQLiteOpenHelper {
                 qa.setIdQA(Integer.parseInt(cursor.getString(0)));
                 qa.setfrageQA(cursor.getString(1));
                 qa.setantwortQA(cursor.getString(2));
+                qa.setAntwort_falsch_1_QA(cursor.getString(3));
+                qa.setAntwort_falsch_2_QA(cursor.getString(4));
+                qa.setAntwort_falsch_3_QA(cursor.getString(5));
                 // Adding contact to list
                 qaList.add(qa);
             } while (cursor.moveToNext());

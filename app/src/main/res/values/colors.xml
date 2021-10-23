@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="colorAccent">#FDFDFD</color>
+    <color name="green">#6D2EC829</color>
+    <color name="red">#83FF0000</color>
+    <color name="buttonDefault">#20000000</color>
 </resources>

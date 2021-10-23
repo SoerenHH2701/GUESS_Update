@@ -15,9 +15,9 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
-        android:layout_centerVertical="true"
         android:background="#20000000"
         android:fontFamily="monospace"
+        android:layout_marginTop="450dp"
         android:text="Start"
         android:textColor="@color/colorAccent"
         android:textStyle="" />

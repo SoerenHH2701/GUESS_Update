@@ -16,21 +16,21 @@ public class Difficulty extends AppCompatActivity {
 
         Button leicht = findViewById(R.id.btnSchwierigkeitLeicht);
         leicht.setOnClickListener(v -> {
-            Intent i = new Intent(Difficulty.this, Category.class);
+            Intent i = new Intent(Difficulty.this, MainActivity.class);
             clickedDifficulty = "leicht";
             startActivity(i);
         });
 
         Button mittel = findViewById(R.id.btnSchwierigkeitMittel);
         mittel.setOnClickListener(v -> {
-            Intent i = new Intent(Difficulty.this, Category.class);
+            Intent i = new Intent(Difficulty.this, MainActivity.class);
             clickedDifficulty = "mittel";
             startActivity(i);
         });
 
         Button schwer = findViewById(R.id.btnSchwierigkeitSchwer);
         schwer.setOnClickListener(v -> {
-            Intent i = new Intent(Difficulty.this, Category.class);
+            Intent i = new Intent(Difficulty.this, MainActivity.class);
             clickedDifficulty = "schwer";
             startActivity(i);
         });
