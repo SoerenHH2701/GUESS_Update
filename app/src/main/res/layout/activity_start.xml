@@ -2,6 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@drawable/wp1"
     android:layout_height="match_parent"
     tools:context="com.pigo.guess_reloaded.Start">
@@ -9,16 +10,13 @@
     <Button
         android:id="@+id/btnStart"
         style="@style/Widget.AppCompat.Button.Borderless.Colored"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:background="#20000000"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_marginTop="450dp"
+        android:background="@drawable/button_start"
         android:fontFamily="sans-serif-black"
-        android:layout_marginTop="550dp"
         android:text="Start"
+        android:layout_centerHorizontal="true"
         android:textColor="@color/colorAccent"
         android:textStyle="" />
 

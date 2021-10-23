@@ -60,6 +60,18 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    public void addToProgressBar(){
+        ProgressBar progressBar = (findViewById(R.id.progressBar));
+        for(int a = 0; a<=9; a++){
+            Handler handler = new Handler();
+            handler.postDelayed(() -> {
+                System.out.println("Progress: " +androidProgress);
+                androidProgress = androidProgress+1;
+                progressBar.setProgress(androidProgress);
+            }, 50 * a);
+        }
+    }
+
     public void setFragenToButtons(){
 
         Button buttonNewGame = (findViewById(R.id.buttonNewGame));
@@ -115,8 +127,7 @@ public class MainActivity extends AppCompatActivity {
                     anim.setRepeatCount(6);
                     if(anim.getRepeatCount() >= 6){
                         antwort1.setBackgroundColor(getResources().getColor(R.color.green));
-                        androidProgress = androidProgress+10;
-                        progressBar.setProgress(androidProgress);
+                        addToProgressBar();
                         Handler handler = new Handler();
                         handler.postDelayed(() -> {
                             antwort1.setEnabled(true);
@@ -175,8 +186,7 @@ public class MainActivity extends AppCompatActivity {
                     anim.setRepeatCount(6);
                     if(anim.getRepeatCount() >= 6){
                         antwort2.setBackgroundColor(getResources().getColor(R.color.green));
-                        androidProgress = androidProgress+10;
-                        progressBar.setProgress(androidProgress);
+                        addToProgressBar();
                         Handler handler = new Handler();
                         handler.postDelayed(() -> {
                             // Buttons wieder aktivieren
@@ -235,8 +245,7 @@ public class MainActivity extends AppCompatActivity {
                     anim.setRepeatCount(6);
                     if(anim.getRepeatCount() >= 6){
                         antwort3.setBackgroundColor(getResources().getColor(R.color.green));
-                        androidProgress = androidProgress+10;
-                        progressBar.setProgress(androidProgress);
+                        addToProgressBar();
                         Handler handler = new Handler();
                         handler.postDelayed(() -> {
                             antwort1.setEnabled(true);
@@ -294,8 +303,7 @@ public class MainActivity extends AppCompatActivity {
                     anim.setRepeatCount(6);
                     if(anim.getRepeatCount() >= 6){
                         antwort4.setBackgroundColor(getResources().getColor(R.color.green));
-                        androidProgress = androidProgress+10;
-                        progressBar.setProgress(androidProgress);
+                            addToProgressBar();
                         Handler handler = new Handler();
                         handler.postDelayed(() -> {
                             antwort1.setEnabled(true);
