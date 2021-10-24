@@ -160,11 +160,22 @@ public class DB_Handler extends SQLiteOpenHelper {
     }
 
     public void removeAllRowsFromNewsTable(){
-        Log.d("insert data", "");
-
-        // get reference to writable DB
         SQLiteDatabase db = this.getWritableDatabase();
         db.delete("selected_qa_table",null,null);
+    }
+
+    public void dropTableQANDA(){
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_QANDA);
+    }
+
+    public void createTableQANDA(){
+        SQLiteDatabase db = this.getWritableDatabase();
+        String CREATE_TABLE_QANDA = "CREATE TABLE " + TABLE_QANDA + "("
+                + KEY_ID + " INTEGER PRIMARY KEY," + KEY_FRAGE + " TEXT,"
+                + KEY_ANTWORT + " TEXT," + KEY_SCHWIERIGKEIT + " TEXT,"
+                + ANTWORT_FALSCH_1 + " TEXT," + ANTWORT_FALSCH_2 + " TEXT," + ANTWORT_FALSCH_3 + " TEXT" + ")";
+        db.execSQL(CREATE_TABLE_QANDA);
     }
 
 

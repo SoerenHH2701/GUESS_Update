@@ -5,14 +5,19 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewConfiguration;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.widget.Button;
 import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Collections;
 import java.util.List;
 
@@ -134,10 +139,10 @@ public class MainActivity extends AppCompatActivity {
                         antwort4.setEnabled(true);
                         antwort1.setBackgroundColor(getResources().getColor(R.color.buttonDefault));
                         shuffelListIncrease++;
-                        if(androidProgress < 100){
+                        if (androidProgress < 100) {
                             setFragenToButtons();
                         }
-                        if(androidProgress == 100){
+                        if (androidProgress == 100) {
                             Intent i = new Intent(MainActivity.this, Winner.class);
                             startActivity(i);
                         }
@@ -199,10 +204,10 @@ public class MainActivity extends AppCompatActivity {
                         antwort4.setEnabled(true);
                         antwort2.setBackgroundColor(getResources().getColor(R.color.buttonDefault));
                         shuffelListIncrease++;
-                        if(androidProgress < 100){
+                        if (androidProgress < 100) {
                             setFragenToButtons();
                         }
-                        if(androidProgress == 100){
+                        if (androidProgress == 100) {
                             Intent i = new Intent(MainActivity.this, Winner.class);
                             startActivity(i);
                         }
@@ -262,10 +267,10 @@ public class MainActivity extends AppCompatActivity {
                         antwort4.setEnabled(true);
                         antwort3.setBackgroundColor(getResources().getColor(R.color.buttonDefault));
                         shuffelListIncrease++;
-                        if(androidProgress < 100){
+                        if (androidProgress < 100) {
                             setFragenToButtons();
                         }
-                        if(androidProgress == 100){
+                        if (androidProgress == 100) {
                             Intent i = new Intent(MainActivity.this, Winner.class);
                             startActivity(i);
                         }
@@ -325,10 +330,10 @@ public class MainActivity extends AppCompatActivity {
                         antwort4.setEnabled(true);
                         antwort4.setBackgroundColor(getResources().getColor(R.color.buttonDefault));
                         shuffelListIncrease++;
-                        if(androidProgress < 100){
+                        if (androidProgress < 100) {
                             setFragenToButtons();
                         }
-                        if(androidProgress == 100){
+                        if (androidProgress == 100) {
                             Intent i = new Intent(MainActivity.this, Winner.class);
                             startActivity(i);
                         }
@@ -396,4 +401,5 @@ public class MainActivity extends AppCompatActivity {
     public String getDbAntwFalsch3(int iAntwFalsch3) {
         return db.getAllQA().get(iAntwFalsch3).getAntwort_falsch_3_QA();
     }
+
 }
