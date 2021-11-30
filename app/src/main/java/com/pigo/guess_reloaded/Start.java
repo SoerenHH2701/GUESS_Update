@@ -28,7 +28,7 @@ public class Start extends AppCompatActivity {
         db.addQANDA(new DB_Columns_QANDA("In welchem Jahr wurde in Berlin das erste deutsche Telefonbuch veröffentlicht?","1881","mittel","1721","1911","1799"));
         db.addQANDA(new DB_Columns_QANDA("Wie hoch ist der höchste Baum Deutschlands? (m)","63","schwer","69","61","78"));
         db.addQANDA(new DB_Columns_QANDA("Wie viele (bekannte) Insektenarten gibt es in der Schweiz?","22300","schwer","19867","24360","26242"));
-        db.addQANDA(new DB_Columns_QANDA("Um wieviele Zentimeter schrumpft der Eifelturm bei Kälte? (cm)","15","schwer","13","10","11"));
+        db.addQANDA(new DB_Columns_QANDA("Um wie viele Zentimeter schrumpft der Eifelturm bei Kälte? (cm)","15","schwer","13","10","11"));
         db.addQANDA(new DB_Columns_QANDA("Wie hoch ist das weltweite Durchschnittsalter beim 1. Sex?","17","leicht","15","13","21"));
         db.addQANDA(new DB_Columns_QANDA("Wie viel Prozent aller weltweiten Schäden an Kopieren werden dadurch verursacht, dass Menschen ihr Hinterteil fotokopieren? (%)","32","mittel","37","28","39"));
         db.addQANDA(new DB_Columns_QANDA("Wie viele Minuten muss man ein Straußenei kochen, bis es hartgekocht ist?","40","leicht","47","29","40"));
@@ -120,7 +120,7 @@ public class Start extends AppCompatActivity {
         db.addQANDA(new DB_Columns_QANDA("Wie viele karibische Inseln waren 2019 vom Hurrikan Irma betroffen?","13","mittel","6","15","11"));
         db.addQANDA(new DB_Columns_QANDA("Wie viele Kinder wurden in Deutschland 2014 nicht im Krankenhaus geboren?","11391","leicht","13987","8656","9053"));
         db.addQANDA(new DB_Columns_QANDA("Seit wann existiert die Verkehrssünderkartei in Flensburg?","1958","leicht","1878","1949","1984"));
-        db.addQANDA(new DB_Columns_QANDA("Wieviel Prozent der im menschlichen Körper befindlichen Atome werden innerhalb eines Jahres ersetzt? (%)","98","mittel","33","100","52"));
+        db.addQANDA(new DB_Columns_QANDA("Wie viel Prozent der im menschlichen Körper befindlichen Atome werden innerhalb eines Jahres ersetzt? (%)","98","mittel","33","100","52"));
         db.addQANDA(new DB_Columns_QANDA("Wie viel Gramm Futter (Mais, Weizen, Soja) frisst ein Huhn pro Tag?","120","leicht","105","55","10"));
         db.addQANDA(new DB_Columns_QANDA("Wie viele Kalorien hat ein Apfel?","52","leicht","37","52","40"));
         db.addQANDA(new DB_Columns_QANDA("Wie viele Weihnachtsbäume werden in Deutschland pro Jahr verkauft?","30000000","leicht","40000000","10000000","20000000"));
@@ -130,10 +130,10 @@ public class Start extends AppCompatActivity {
         db.addQANDA(new DB_Columns_QANDA("Wie hoch ist der Anteil der Menschen in Deutschland, die sich bei den Mahlzeiten Frühstück, Mittagessen und Abendessen an feste Zeiten halten (%)?","33","leicht","37","41","38"));
         db.addQANDA(new DB_Columns_QANDA("In welchem Jahr fiel die Berliner Mauer?","1989","schwer","1999","1963","1945"));
         db.addQANDA(new DB_Columns_QANDA("In welcher Höhe befindet sich die internationale Raumstation ISS? (km)","400","leicht","341","280","472"));
-        db.addQANDA(new DB_Columns_QANDA("Wieviele Kilogramm Haut schuppen sich im Laufe eines Lebens vom Körper ab (kg)?","20","leicht","15","10","19"));
+        db.addQANDA(new DB_Columns_QANDA("Wie viele Kilogramm Haut schuppen sich im Laufe eines Lebens vom Körper ab (kg)?","20","leicht","15","10","19"));
         db.addQANDA(new DB_Columns_QANDA("Wie viele Apfelsorten gibt es weltweit?","20000","schwer","7000","19000","14000"));
-        db.addQANDA(new DB_Columns_QANDA("Wie viele Räume hat der Buckingham Palast?","602","leicht","693","449","545"));
-        db.addQANDA(new DB_Columns_QANDA("Wieviel Liter Wasser kann ein Kamel in 15 Minuten trinken?","200","leicht","160","246","182"));
+        db.addQANDA(new DB_Columns_QANDA("Wie viele Räume hat der Buckingham Palace?","602","leicht","693","449","545"));
+        db.addQANDA(new DB_Columns_QANDA("Wie viel Liter Wasser kann ein Kamel in 15 Minuten trinken?","200","leicht","160","246","182"));
         db.addQANDA(new DB_Columns_QANDA("Wie viel darf ein Boxer der Fliegengewichtklasse maximal wiegen? (kg)","51","schwer","47","38","59"));
         db.addQANDA(new DB_Columns_QANDA("Wie hoch ist der Mt. Everest? (m)","8848","mittel","8322","8107","7981"));
         db.addQANDA(new DB_Columns_QANDA("Wie schwer war Manuel Uribe Garza (der schwerste Mensch der Welt)? (kg)","592","leicht","647","331","441"));
@@ -165,42 +165,12 @@ public class Start extends AppCompatActivity {
 
         TextView tvLogo = findViewById(R.id.tvLogo);
 
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                tvLogo.append("G");
-            }
-        }, 600);
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                tvLogo.append("U");
-            }
-        }, 900);
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                tvLogo.append("E");
-            }
-        }, 1200);
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                tvLogo.append("S");
-            }
-        }, 1500);
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                tvLogo.append("S");
-            }
-        }, 1800);
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                start.setVisibility(View.VISIBLE);
-            }
-        }, 2100);
+        new Handler().postDelayed(() -> tvLogo.append("G"), 600);
+        new Handler().postDelayed(() -> tvLogo.append("U"), 900);
+        new Handler().postDelayed(() -> tvLogo.append("E"), 1200);
+        new Handler().postDelayed(() -> tvLogo.append("S"), 1500);
+        new Handler().postDelayed(() -> tvLogo.append("S"), 1800);
+        new Handler().postDelayed(() -> start.setVisibility(View.VISIBLE), 2100);
 
         start.setOnClickListener(v -> {
             Intent i = new Intent(Start.this, Difficulty.class);

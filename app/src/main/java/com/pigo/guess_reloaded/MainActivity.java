@@ -5,19 +5,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.ViewConfiguration;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.widget.Button;
 import android.widget.ProgressBar;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Collections;
 import java.util.List;
 
@@ -122,7 +117,7 @@ public class MainActivity extends AppCompatActivity {
             antwort3.setEnabled(false);
             antwort4.setEnabled(false);
 
-            if (dbAntwort == ButtonAntw1Text) {
+            if (dbAntwort.equals(ButtonAntw1Text)) {
                 Animation anim = new AlphaAnimation(0.0f, 1.0f);
                 anim.setDuration(100);
                 anim.setStartOffset(20);
@@ -158,13 +153,13 @@ public class MainActivity extends AppCompatActivity {
                 antwort1.startAnimation(anim);
                 antwort1.setBackgroundColor(getResources().getColor(R.color.red));
 
-                if (dbAntwort == antwort2Text) {
+                if (dbAntwort.equals(antwort2Text)) {
                     antwort2.setBackgroundColor(getResources().getColor(R.color.green));
                 }
-                if (dbAntwort == antwort3Text) {
+                if (dbAntwort.equals(antwort3Text)) {
                     antwort3.setBackgroundColor(getResources().getColor(R.color.green));
                 }
-                if (dbAntwort == antwort4Text) {
+                if (dbAntwort.equals(antwort4Text)) {
                     antwort4.setBackgroundColor(getResources().getColor(R.color.green));
                 }
                 buttonNewGame.setVisibility(View.VISIBLE);
@@ -186,7 +181,7 @@ public class MainActivity extends AppCompatActivity {
             antwort3.setEnabled(false);
             antwort4.setEnabled(false);
 
-            if (dbAntwort == ButtonAntw2Text) {
+            if (dbAntwort.equals(ButtonAntw2Text)) {
                 Animation anim = new AlphaAnimation(0.0f, 1.0f);
                 anim.setDuration(100);
                 anim.setStartOffset(20);
@@ -223,13 +218,13 @@ public class MainActivity extends AppCompatActivity {
                 antwort2.startAnimation(anim);
                 antwort2.setBackgroundColor(getResources().getColor(R.color.red));
 
-                if (dbAntwort == antwort1Text) {
+                if (dbAntwort.equals(antwort1Text)) {
                     antwort1.setBackgroundColor(getResources().getColor(R.color.green));
                 }
-                if (dbAntwort == antwort3Text) {
+                if (dbAntwort.equals(antwort3Text)) {
                     antwort3.setBackgroundColor(getResources().getColor(R.color.green));
                 }
-                if (dbAntwort == antwort4Text) {
+                if (dbAntwort.equals(antwort4Text)) {
                     antwort4.setBackgroundColor(getResources().getColor(R.color.green));
                 }
                 buttonNewGame.setVisibility(View.VISIBLE);
@@ -249,7 +244,7 @@ public class MainActivity extends AppCompatActivity {
             antwort3.setEnabled(false);
             antwort4.setEnabled(false);
 
-            if (dbAntwort == ButtonAntw3Text) {
+            if (dbAntwort.equals(ButtonAntw3Text)) {
 
                 Animation anim = new AlphaAnimation(0.0f, 1.0f);
                 anim.setDuration(100);
@@ -287,13 +282,13 @@ public class MainActivity extends AppCompatActivity {
                 antwort3.startAnimation(anim);
                 antwort3.setBackgroundColor(getResources().getColor(R.color.red));
 
-                if (dbAntwort == antwort1Text) {
+                if (dbAntwort.equals(antwort1Text)) {
                     antwort1.setBackgroundColor(getResources().getColor(R.color.green));
                 }
-                if (dbAntwort == antwort2Text) {
+                if (dbAntwort.equals(antwort2Text)) {
                     antwort2.setBackgroundColor(getResources().getColor(R.color.green));
                 }
-                if (dbAntwort == antwort4Text) {
+                if (dbAntwort.equals(antwort4Text)) {
                     antwort4.setBackgroundColor(getResources().getColor(R.color.green));
                 }
                 buttonNewGame.setVisibility(View.VISIBLE);
@@ -313,7 +308,7 @@ public class MainActivity extends AppCompatActivity {
             antwort3.setEnabled(false);
             antwort4.setEnabled(false);
 
-            if (dbAntwort == ButtonAntw4Text) {
+            if (dbAntwort.equals(ButtonAntw4Text)) {
                 Animation anim = new AlphaAnimation(0.0f, 1.0f);
                 anim.setDuration(100);
                 anim.setStartOffset(20);
@@ -349,13 +344,13 @@ public class MainActivity extends AppCompatActivity {
                 antwort4.startAnimation(anim);
                 antwort4.setBackgroundColor(getResources().getColor(R.color.red));
 
-                if (dbAntwort == antwort1Text) {
+                if (dbAntwort.equals(antwort1Text)) {
                     antwort1.setBackgroundColor(getResources().getColor(R.color.green));
                 }
-                if (dbAntwort == antwort2Text) {
+                if (dbAntwort.equals(antwort2Text)) {
                     antwort2.setBackgroundColor(getResources().getColor(R.color.green));
                 }
-                if (dbAntwort == antwort3Text) {
+                if (dbAntwort.equals(antwort3Text)) {
                     antwort3.setBackgroundColor(getResources().getColor(R.color.green));
                 }
                 buttonNewGame.setVisibility(View.VISIBLE);

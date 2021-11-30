@@ -22,7 +22,7 @@ public class DB_Columns_QANDA {
         this.antwort_falsch_3 = antwort_falsch_3;
     }
 
-    public int getID() { return this.id; };
+    public int getID() { return this.id; }
 
     public void setID(int id){
         this.id = id;
