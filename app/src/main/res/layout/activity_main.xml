@@ -14,41 +14,41 @@
         android:id="@+id/TextViewFrageDB"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Frage"
-        android:textSize="18dp"
-        android:gravity="center"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="80dp"
         android:background="#20000000"
-        android:textAlignment="center"
         android:fontFamily="sans-serif-black"
-        android:textStyle=""
-        android:textColor="@color/colorAccent"
+        android:gravity="center"
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="80dp"
+        android:text="Frage"
+        android:textAlignment="center"
+        android:textColor="@color/colorAccent"
+        android:textSize="24dp"
 
-        android:layout_centerHorizontal="true" />
+        android:textStyle="" />
 
     <TextView
         android:id="@+id/TextViewAntwortDB"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/TextViewFrageDB"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
         android:layout_marginTop="10dp"
         android:fontFamily="monospace"
         android:gravity="center"
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
         android:textAlignment="center"
-        android:layout_centerVertical="true"
-        android:textColor="@color/colorAccent"
-        android:layout_below="@+id/TextViewFrageDB"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:textColor="@color/colorAccent" />
 
     <Button
         android:id="@+id/antwort1"
@@ -151,26 +151,5 @@
         android:progress="0"
         android:progressTint="@color/colorAccent" />
 
-    <TextView
-        android:id="@+id/tvErklaerung"
-        android:layout_width="391dp"
-        android:layout_height="247dp"
-        android:layout_alignTop="@+id/progressBar"
-        android:layout_alignEnd="@+id/TextViewAntwortDB"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_marginTop="-279dp"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp"
-        android:background="#20000000"
-        android:fontFamily="monospace"
-        android:gravity="center"
-        android:text="TextView"
-        android:textAlignment="center"
-        android:textColor="@color/colorAccent"
-        android:textSize="18dp"
-        android:textStyle="" />
 
 </RelativeLayout>
